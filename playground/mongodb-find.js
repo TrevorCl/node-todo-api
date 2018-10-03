@@ -45,5 +45,18 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', {useNewUrlParser:true},
       console.log('Unable to fetch Users', err);
    });
 
+   db.collection('Todos').find().toArray().then( (docs)=> {
+     console.log(JSON.stringify(docs, undefined, 2));
+      // for (var o in docs) {
+      //   console.log(o.name + '\n');
+      // }
+      console.log(`Todos: ${docs.length}`);
+      for (var i=0; i<docs.length; i++) {
+         console.log(docs[i].text );
+      }
+   },(err)=> {
+      console.log('Unable to fetch Todos', err);
+   });
+
    client.close();
 });

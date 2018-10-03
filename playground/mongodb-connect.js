@@ -16,26 +16,26 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', {useNewUrlParser:true},
 
    const db=client.db('TodoApp');
 
-   // db.collection('Todos').insertOne({
-   //    text:'Something to do',
-   //    completed: false
-   // },(err, result)=> {
-   //   if(err) {
-   //     return console.log('unable to insert todo', err);
-   //   }
-   //   console.log(JSON.stringify(result.ops, undefined, 2));
-   // });
-
-   db.collection('Users').insertOne({
-      name:'Tex Mex',
-      age:43,
-      location:'Swindon'
-   }, (err,result) => {
-      if (err) {
-        return console.log('Unable to connect to Users collection', err);
-      }
-      console.log('COnnected to Users collection');
-      console.log(result.ops[0]._id.getTimestamp());
+   db.collection('Todos').insertOne({
+      text:'Something to do',
+      completed: false
+   },(err, result)=> {
+     if(err) {
+       return console.log('unable to insert todo', err);
+     }
+     console.log(JSON.stringify(result.ops, undefined, 2));
    });
+
+   // db.collection('Users').insertOne({
+   //    name:'Tex Mex',
+   //    age:43,
+   //    location:'Swindon'
+   // }, (err,result) => {
+   //    if (err) {
+   //      return console.log('Unable to connect to Users collection', err);
+   //    }
+   //    console.log('COnnected to Users collection');
+   //    console.log(result.ops[0]._id.getTimestamp());
+   // });
    client.close();
 });
